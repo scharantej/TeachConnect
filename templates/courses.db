@@ -1,0 +1,50 @@
+
+sql
+CREATE TABLE courses (
+id INTEGER PRIMARY KEY,
+name TEXT NOT NULL,
+description TEXT
+);
+
+CREATE TABLE instructors (
+id INTEGER PRIMARY KEY,
+name TEXT NOT NULL,
+email TEXT NOT NULL,
+phone TEXT NOT NULL
+);
+
+CREATE TABLE schedule (
+id INTEGER PRIMARY KEY,
+course_id INTEGER NOT NULL,
+instructor_id INTEGER NOT NULL,
+date TEXT NOT NULL,
+time TEXT NOT NULL,
+FOREIGN KEY (course_id) REFERENCES courses (id),
+FOREIGN KEY (instructor_id) REFERENCES instructors (id)
+);
+
+CREATE TABLE registrations (
+id INTEGER PRIMARY KEY,
+name TEXT NOT NULL,
+email TEXT NOT NULL,
+phone TEXT NOT NULL,
+course TEXT NOT NULL
+);
+
+INSERT INTO courses (name, description) VALUES
+('Course 1', 'This is a course on Python programming.'),
+('Course 2', 'This is a course on Java programming.'),
+('Course 3', 'This is a course on C++ programming.');
+
+INSERT INTO instructors (name, email, phone) VALUES
+('John Doe', 'johndoe@example.com', '123-456-7890'),
+('Jane Smith', 'janesmith@example.com', '234-567-8901'),
+('Michael Jones', 'michaeljones@example.com', '345-678-9012');
+
+INSERT INTO schedule (course_id, instructor_id, date, time) VALUES
+(1, 1, '2023-03-08', '10:00 AM - 12:00 PM'),
+(1, 2, '2023-03-10', '1:00 PM - 3:00 PM'),
+(2, 3, '2023-03-15', '10:00 AM - 12:00 PM'),
+(2, 1, '2023-03-17', '1:00 PM - 3:00 PM'),
+(3, 2, '2023-03-22', '10:00 AM - 12:00 PM'),
+(3, 3, '2023-03-24', '
